@@ -6,14 +6,14 @@
 
     <div class="container-xl">
 
-        
+
         <post-form
             :action="'{{ url('admin/posts') }}'"
             v-cloak
             inline-template>
 
             <form class="form-horizontal form-create" method="post" @submit.prevent="onSubmit" :action="action" novalidate>
-                
+
                 <div class="row">
                     <div class="col">
                         <div class="card">
@@ -30,7 +30,7 @@
                         @include('admin.post.components.form-elements-right')
                     </div>
                 </div>
-                                
+
                 <button type="submit" class="btn btn-primary fixed-cta-button button-save" :disabled="submiting">
                     <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-save'"></i>
                     {{ trans('brackets/admin-ui::admin.btn.save') }}
@@ -39,12 +39,12 @@
                     <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-check'"></i>
                     <span>{{ trans('brackets/admin-ui::admin.btn.saved') }}</span>
                 </button>
-                
+
             </form>
 
         </post-form>
 
         </div>
 
-    
+
 @endsection

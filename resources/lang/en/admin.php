@@ -23,10 +23,31 @@ return [
             'activated' => 'Activated',
             'forbidden' => 'Forbidden',
             'language' => 'Language',
-                
+
             //Belongs to many relations
             'roles' => 'Roles',
-                
+
+        ],
+    ],
+
+    'post' => [
+        'title' => 'Posts',
+
+        'actions' => [
+            'index' => 'Posts',
+            'create' => 'New Post',
+            'edit' => 'Edit :name',
+            'will_be_published' => 'Post will be published at',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'body' => 'Body',
+            'published_at' => 'Published at',
+            'enabled' => 'Enabled',
+
         ],
     ],
 

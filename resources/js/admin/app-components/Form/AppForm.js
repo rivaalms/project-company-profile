@@ -7,7 +7,7 @@ export default {
             customDatetimePickerConfig: {
                 enableTime: false,
                 time_24hr: false,
-                enableSeconds: AsyncCompiler,
+                enableSeconds: false,
                 dateFormat: 'Y-m-d',
                 altInput: true,
                 altFormat: 'Y-m-d',
