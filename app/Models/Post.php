@@ -26,6 +26,11 @@ class Post extends Model
 
     ];
 
+    protected $casts = [
+        'enabled' => 'boolean',
+        'published_at' => 'date'
+    ];
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */

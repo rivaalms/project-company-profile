@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+require(__DIR__ . '/client/web.php');
 
 
 /* Auto-generated admin routes */
