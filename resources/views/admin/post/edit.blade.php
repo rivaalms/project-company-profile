@@ -9,9 +9,10 @@
             <post-form
                 :action="'{{ $post->resource_url }}'"
                 :data="{{ $post->toJson() }}"
+                :categories="{{ $categories->toJson() }}"
                 v-cloak
                 inline-template>
-            
+
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="action" novalidate>
 
                     <div class="row">
@@ -30,7 +31,7 @@
                             @include('admin.post.components.form-elements-right', ['showHistory' => true])
                         </div>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary fixed-cta-button button-save" :disabled="submiting">
                         <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-save'"></i>
                         {{ trans('brackets/admin-ui::admin.btn.save') }}
@@ -40,12 +41,12 @@
                         <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-check'"></i>
                         <span>{{ trans('brackets/admin-ui::admin.btn.saved') }}</span>
                     </button>
-                     
+
                 </form>
 
         </post-form>
 
-    
+
 </div>
 
 @endsection

@@ -24,6 +24,28 @@
     </div>
 </div>
 
+<div class="form-group row align-items-center"
+     :class="{'has-danger': errors.has('category_id'), 'has-success': this.fields.category_id && this.fields.category_id.valid }">
+    <label for="category_id"
+           class="col-form-label text-center col-md-4 col-lg-3">{{ trans('admin.post.columns.category_id') }}</label>
+    <div class="col-md-8 col-lg-9">
+
+        <multiselect
+            v-model="form.category"
+            :options="categories"
+            :multiple="false"
+            track-by="id"
+            label="name"
+            tag-placeholder="{{ __('Select Category') }}"
+            placeholder="{{ __('Category') }}">
+        </multiselect>
+
+        <div v-if="errors.has('category_id')" class="form-control-feedback form-text" v-cloak>@{{
+            errors.first('category_id') }}
+        </div>
+    </div>
+</div>
+
 
 <div class="form-check row" :class="{'has-danger': errors.has('enabled'), 'has-success': fields.enabled && fields.enabled.valid }">
     <div class="ml-md-auto" :class="isFormLocalized ? 'col-md-8' : 'col-md-10'">

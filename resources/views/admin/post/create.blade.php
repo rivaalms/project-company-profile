@@ -6,9 +6,9 @@
 
     <div class="container-xl">
 
-
         <post-form
             :action="'{{ url('admin/posts') }}'"
+            :categories="{{ $categories->toJson() }}"
             v-cloak
             inline-template>
 

@@ -13,9 +13,13 @@
             </p>
         </div>
     </div>
-    <div class="bg-white border-b">
+    <div class="bg-white shadow-md">
         <div class="container mx-auto flex justify-between gap-4 py-6">
-            <div class="flex-1"></div>
+            <div class="flex-1">
+                <span class="font-bold">
+                    Image
+                </span>
+            </div>
             <div class="flex gap-8">
                 <a href="/">
                     Beranda
@@ -31,7 +35,7 @@
     </div>
 </header>
 
-<div class="mt-[121px] min-h-[calc(100dvh-121px)]">
+<div class="mt-[121px] min-h-[calc(100dvh-121px-192px)]">
     @yield('content')
 </div>
 
@@ -41,22 +45,22 @@
             <div class="">
                 image
             </div>
-            <div class="flex flex-col gap-8">
+            <div class="flex flex-col gap-4">
                 <p class="font-bold">
                     Tentang Kami
                 </p>
 
-                <ul class="list-none space-y-4">
+                <ul class="list-none space-y-2">
                     <li>Profil</li>
                     <li>Visi, Misi dan Tujuan</li>
                 </ul>
             </div>
-            <div class="flex flex-col gap-8">
+            <div class="flex flex-col gap-4">
                 <p class="font-bold">
                     Layanan
                 </p>
 
-                <ul class="list-none space-y-4">
+                <ul class="list-none space-y-2">
                     <li>Profil</li>
                     <li>Visi, Misi dan Tujuan</li>
                 </ul>

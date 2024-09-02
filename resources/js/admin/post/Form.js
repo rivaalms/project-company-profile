@@ -10,9 +10,11 @@ Vue.component('post-form', {
                 body:  '' ,
                 published_at:  '' ,
                 enabled:  false ,
-                
-            }
+                category: '',
+            },
         }
-    }
-
+    },
+    props: [
+        'categories'
+    ],
 });

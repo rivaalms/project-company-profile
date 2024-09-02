@@ -15,7 +15,7 @@ class Post extends Model
         'body',
         'published_at',
         'enabled',
-
+        'category_id'
     ];
 
 
@@ -38,5 +38,10 @@ class Post extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/posts/'.$this->getKey());
+    }
+
+
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 }

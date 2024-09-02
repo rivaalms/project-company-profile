@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body')->nullable();
+            $table->integer('category_id', false, true)->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->date('published_at')->nullable();
             $table->boolean('enabled')->default(false);
             $table->timestamps();

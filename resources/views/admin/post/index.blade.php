@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="col-sm-auto form-group ">
                                         <select class="form-control" v-model="pagination.state.per_page">
-                                            
+
                                             <option value="10">10</option>
                                             <option value="25">25</option>
                                             <option value="100">100</option>
@@ -52,6 +52,7 @@
 
                                         <th is='sortable' :column="'id'">{{ trans('admin.post.columns.id') }}</th>
                                         <th is='sortable' :column="'title'">{{ trans('admin.post.columns.title') }}</th>
+                                        <th is='sortable' :column="'category_id'">{{ trans('admin.post.columns.category_id') }}</th>
                                         <th is='sortable' class="text-center" :column="'published_at'">{{ trans('admin.post.columns.published_at') }}</th>
                                         <th is='sortable' :column="'enabled'">{{ trans('admin.post.columns.enabled') }}</th>
 
@@ -79,6 +80,7 @@
 
                                     <td>@{{ item.id }}</td>
                                         <td>@{{ item.title }}</td>
+                                        <td>@{{ item.category?.name }}</td>
                                             <td class="text-center text-nowrap">
                                             <span v-if="item.published_at <= now">
                                                 @{{ item.published_at | datetime('DD.MM.YYYY, HH:mm') }}
@@ -102,7 +104,7 @@
                                                 </form>
                                             </div>
                                         </td>
-                                        
+
                                         <td>
                                             <label class="switch switch-3d switch-success">
                                                 <input type="checkbox" class="switch-input" v-model="collection[index].enabled" @change="toggleSwitch(item.resource_url, 'enabled', collection[index])">
@@ -110,7 +112,7 @@
                                             </label>
                                         </td>
 
-                                        
+
                                         <td>
                                             <div class="row no-gutters">
                                                 <div class="col-auto">

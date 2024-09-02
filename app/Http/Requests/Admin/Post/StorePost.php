@@ -31,7 +31,7 @@ class StorePost extends FormRequest
             'body' => ['nullable', 'string'],
             'published_at' => ['nullable', 'date'],
             'enabled' => ['required', 'boolean'],
-            
+            'category' => ['required']
         ];
     }
 
@@ -47,5 +47,12 @@ class StorePost extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getCategoryId() {
+        if ($this->has('category')) {
+            return $this->get('category')['id'];
+        }
+        return null;
     }
 }

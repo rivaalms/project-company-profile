@@ -34,7 +34,7 @@ class UpdatePost extends FormRequest
             'enabled' => ['sometimes', 'boolean'],
             'publish_now' => ['nullable', 'boolean'],
             'unpublish_now' => ['nullable', 'boolean'],
-
+            'category' => ['sometimes']
         ];
     }
 
@@ -58,5 +58,12 @@ class UpdatePost extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getCategoryId() {
+        if ($this->has('category')) {
+            return $this->get('category')['id'];
+        }
+        return null;
     }
 }

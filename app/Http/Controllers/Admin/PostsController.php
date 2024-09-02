@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Post\DestroyPost;
 use App\Http\Requests\Admin\Post\IndexPost;
 use App\Http\Requests\Admin\Post\StorePost;
 use App\Http\Requests\Admin\Post\UpdatePost;
+use App\Models\Category;
 use App\Models\Post;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
@@ -37,10 +38,19 @@ class PostsController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'title', 'published_at', 'enabled'],
+            ['id', 'title', 'published_at', 'enabled', 'category_id'],
 
             // set columns to searchIn
-            ['id', 'title', 'slug', 'body']
+            ['id', 'title', 'slug', 'body'],
+
+            function ($query) use ($request) {
+                $query->with(['category']);
+
+                $query->leftJoin('categories', 'categories.id', '=', 'posts.category_id');
+                if ($request->has('categories')) {
+                    $query->whereIn('category_id', $request->get('categories'));
+                }
+            }
         );
 
         if ($request->ajax()) {
@@ -52,7 +62,7 @@ class PostsController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.post.index', ['data' => $data]);
+        return view('admin.post.index', ['data' => $data, 'categories' => Category::all()]);
     }
 
     /**
@@ -65,7 +75,9 @@ class PostsController extends Controller
     {
         $this->authorize('admin.post.create');
 
-        return view('admin.post.create');
+        return view('admin.post.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -78,6 +90,7 @@ class PostsController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized['category_id'] = $request->getCategoryId();
 
         // Store the Post
         $post = Post::create($sanitized);
@@ -113,10 +126,12 @@ class PostsController extends Controller
     public function edit(Post $post)
     {
         $this->authorize('admin.post.edit', $post);
+        $post->load(['category']);
 
 
         return view('admin.post.edit', [
             'post' => $post,
+            'categories' => Category::all()
         ]);
     }
 
@@ -131,6 +146,9 @@ class PostsController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        if (!empty($request->getCategoryId())) {
+            $sanitized['category_id'] = $request->getCategoryId();
+        }
 
         // Update changed values Post
         $post->update($sanitized);
