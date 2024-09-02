@@ -2,7 +2,7 @@
 @section('layout')
 
 <header class="fixed top-0 inset-x-0 flex flex-col">
-    <div class="bg-blue-800">
+    {{-- <div class="bg-blue-800">
         <div class="container mx-auto p-4 flex gap-4 text-xs text-white">
             <p>
                 0895401998822
@@ -12,7 +12,7 @@
                 email@email.com
             </p>
         </div>
-    </div>
+    </div> --}}
     <div class="bg-white shadow-md">
         <div class="container mx-auto flex justify-between gap-4 py-6">
             <div class="flex-1">
@@ -35,12 +35,12 @@
     </div>
 </header>
 
-<div class="mt-[121px] min-h-[calc(100dvh-121px-192px)]">
+<div class="mt-[72px] min-h-[calc(100dvh-72px-192px)]">
     @yield('content')
 </div>
 
-<footer class="bg-blue-800">
-    <div class="container mx-auto py-12 text-white">
+<footer class="bg-gray-200">
+    <div class="container mx-auto py-12">
         <div class="grid gap-4 grid-cols-4">
             <div class="">
                 image
